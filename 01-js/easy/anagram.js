@@ -5,7 +5,16 @@
 */
 
 function isAnagram(str1, str2) {
-
+  str1 = str1.toLowerCase();  // convert to lowercase 
+  str2 = str2.toLowerCase();  
+  let arr1 = str1.split("");  // convert string to array
+  let arr2 = str2.split("");  
+  arr1.sort();                // sort array
+  arr2.sort();                
+  str1 = arr1.join("");       // convert array to string
+  str2 = arr2.join("");       
+  return str1 === str2;       // compare strings
 }
+// console.log(isAnagram("Listen", "Silent")); 
 
 module.exports = isAnagram;
