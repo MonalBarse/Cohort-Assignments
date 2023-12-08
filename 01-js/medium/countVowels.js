@@ -24,7 +24,7 @@ console.log(countVowels("Monal"));
 //Little More optimised solution
 
 function countVowels(str) {
-  const newStr = str.replace(/[^a-zA-Z]/g, '').toLowerCase();
+  const newStr = str.replace(/[^a-zA-Z]/g, '').toLowerCase().trim();
   const vowels = ['a', 'e', 'i', 'o', 'u'];
   let count = 0;
 
@@ -36,5 +36,7 @@ function countVowels(str) {
 
   return count;
 }
+
+
 
 module.exports = countVowels;
