@@ -22,3 +22,11 @@ Recommended order below but feel free to make a mess in any order you like.
 #### Development Setup
 1. If you have Node.js locally, you should run these on your machine
 2. If you don't, you can copy these over to repl.it and run it there.
+
+
+#### Things to revise and understand before starting with the assignment
+> Date Class
+> fs module from node (The Node.js fs module provides an interface to the underlying operating system's file system. It can be used to read, write, update, and delete files and directories.)
+> Classes & OOP 
+> Map, Filter, reduce
+> Promises
