@@ -25,8 +25,13 @@ Recommended order below but feel free to make a mess in any order you like.
 
 
 #### Things to revise and understand before starting with the assignment
-> Date Class
-> fs module from node (The Node.js fs module provides an interface to the underlying operating system's file system. It can be used to read, write, update, and delete files and directories.)
-> Classes & OOP 
-> Map, Filter, reduce
-> Promises
+
+1. Date Class
+
+2. fs module from node (The Node.js fs module provides an interface to the underlying operating system's file system. It can be used to read, write, update, and delete files and directories.)
+
+3. Classes & OOP 
+
+4. Map, Filter, reduce
+
+5. Promises
