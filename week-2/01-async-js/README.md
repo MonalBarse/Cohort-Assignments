@@ -24,7 +24,7 @@ Recommended order below but feel free to make a mess in any order you like.
 2. If you don't, you can copy these over to repl.it and run it there.
 
 
-#### Things to revise and understand before starting with the assignment
+### Things to revise and understand before starting with the assignment
 
 1. Date Class
 
