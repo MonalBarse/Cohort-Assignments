@@ -45,7 +45,7 @@ console.log('Formatted Date with Options:', formattedDateWithOptions);
 
 */
 
-// ----------------------------------------XX---------------------------------------- //
+// ---------------------------------------- fs (FileSystem) ---------------------------------------- //
 
 /* 
 
@@ -75,12 +75,113 @@ fs.readFile(path[, options], callback)#
         
 So, readFile(path[, options], callback) Asynchronously reads the entire contents of a file.
 
-Example: Reading a file asynchronously using Node.js
-
-    import { readFile } from 'node:fs';  // import the readFile function from the fs module
-    readFile('/etc/passwd', (err,'utf-8', data) => { 
-        if (err) throw err;
-        console.log(data);
-    });
 
 */
+// Example: Reading a file asynchronously using Node.js
+
+   /*  import { readFile } from 'node:fs';  // import the readFile function from the fs module
+    readFile('/etc/passwd', (err, data) => { 
+        if (err) throw err;
+        console.log(data);
+    }); */
+
+//--------------------------------------Creating Promises--------------------------------------//
+
+/* 
+    const promise_1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Async task was completed")
+            resolve();
+        }, 1000);
+
+    });
+
+    promise_1.then(() => {
+        console.log("promise Consumed")
+    }
+    ) 
+
+*/
+
+
+/*
+    const promise_2 = new Promise((resolve, reject) => {
+        console.log(
+            `
+            You can pass arguments in 'resolve'
+            Here we are passing an OBJECT,
+            which will appear after 2000 ms
+            `);
+        setTimeout(() => {
+            resolve({
+                name: " Monal",
+                age: "19",
+                college: "IIT (BHU)"
+            });
+        }, 2000);
+    });
+
+    promise_2.then((data) => { // Here, `data` is the object we passed in resolve
+        console.log(data); // {name: " Monal", age: "19", college: "IIT (BHU)"}
+    });
+ 
+*/
+
+/*
+    const promise_3 = new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            let error = false;
+            if(!error){
+                resolve({                       //resolve use
+                    name: " Monal",
+                    age: "19",
+                    college: "IIT (BHU)"
+                });
+            }else{
+                reject("There was some error");  //reject use
+            }
+        }, 1000);
+    })
+
+    promise_3.then((user)=>{
+        console.log(`${JSON.stringify(user)}`);
+        return user.name;
+    }).then((ans)=>{
+        console.log(ans);
+    }).catch((err)=>{
+        console.log(err);
+    }).finally(()=>console.log("Promise was either completed or rejected.")) 
+
+*/
+
+//-----------------Async/Await Syntax---------------//
+/* 
+
+
+    const promise_4 = new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            let error = false;
+            if(!error){
+                resolve({
+                    username: "Monal",
+                    password: "26198"
+                })
+            }else{
+                reject("There was some error");
+            }
+            
+        }, 1000);
+    })
+
+    async function consumePromise_4() {
+        try {
+            const sys = await promise_4;
+            console.log(sys);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    consumePromise_4(); 
+    
+
+ */
