@@ -79,15 +79,44 @@ So, readFile(path[, options], callback) Asynchronously reads the entire contents
 */
 // Example: Reading a file asynchronously using Node.js
 
-   /*  import { readFile } from 'node:fs';  // import the readFile function from the fs module
-    readFile('/etc/passwd', (err, data) => { 
-        if (err) throw err;
-        console.log(data);
-    }); */
+/*  import { readFile } from 'node:fs';  // import the readFile function from the fs module
+ readFile('/etc/passwd', (err, data) => { 
+     if (err) throw err;
+     console.log(data);
+ // }); */
+//------------------------------------------fs.readdir-----------------------------------------//
 
+// fsPromises.readdir(path[, options])
+
+//       import { readdir } from 'node:fs/promises';
+/* 
+    - path:         <string> | <Buffer> | <URL>
+
+    - options:      <string> | <Object>
+        1. encoding <string> Default: 'utf8'
+        2. withFileTypes <boolean> Default: false
+        3. recursive <boolean> If true, reads the contents of a directory recursively. In recursive mode, it will list all files, sub files, and directories. Default: false.
+        
+    - Returns:      <Promise> Fulfills with an array of the names of the files in the directory excluding '.' and '..'
+
+
+
+*/
+/* //Example:
+        import { readdir } from 'node:fs/promises';
+
+        try {
+            const files = await readdir(path);
+            for (const file of files)
+                console.log(file);
+        } catch (err) {
+            console.error(err);
+        }
+
+ */
 //--------------------------------------Creating Promises--------------------------------------//
 
-/* 
+/*
     const promise_1 = new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("Async task was completed")
@@ -99,7 +128,7 @@ So, readFile(path[, options], callback) Asynchronously reads the entire contents
     promise_1.then(() => {
         console.log("promise Consumed")
     }
-    ) 
+    )
 
 */
 
@@ -124,7 +153,7 @@ So, readFile(path[, options], callback) Asynchronously reads the entire contents
     promise_2.then((data) => { // Here, `data` is the object we passed in resolve
         console.log(data); // {name: " Monal", age: "19", college: "IIT (BHU)"}
     });
- 
+
 */
 
 /*
@@ -150,7 +179,7 @@ So, readFile(path[, options], callback) Asynchronously reads the entire contents
         console.log(ans);
     }).catch((err)=>{
         console.log(err);
-    }).finally(()=>console.log("Promise was either completed or rejected.")) 
+    }).finally(()=>console.log("Promise was either completed or rejected."))
 
 */
 

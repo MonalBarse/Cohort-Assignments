@@ -1,7 +1,7 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
-const server = require('../fileServer');
+const server = require('../1-fileServer');
 
 describe('API Endpoints', () => {
   let globalServer;
@@ -9,7 +9,7 @@ describe('API Endpoints', () => {
   beforeAll((done) => {
     if (globalServer) {
         globalServer.close();
-    }
+    } 
     globalServer = server.listen(3000);
     done()
   });
