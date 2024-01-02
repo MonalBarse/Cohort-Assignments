@@ -245,4 +245,5 @@ function clock(){
     console.log(time);
 }
 
-clock();
+clock(); 
+
