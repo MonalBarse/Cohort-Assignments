@@ -1,5 +1,14 @@
+/* 
+# JWTs
+ - Write a function that takes in a username and password and returns a JWT token with the username encoded. 
+    Should return null if the username is not a valid email or if the password is less than 6 characters. Try using the zod library here
+ - Write a function that takes a jwt as input and returns true if the jwt can be DECODED (not verified). Return false otherwise
+ - Write a function that takes a jwt as input and returns true if the jwt can be VERIFIED. Return false otherewise
+ - To test, go to the 02-jwt folder and run `npx jest ./tests`
+*/
 const jwt = require('jsonwebtoken');
 const jwtPassword = 'secret';
+const zod = require('zod');
 
 
 /**
@@ -15,6 +24,23 @@ const jwtPassword = 'secret';
  */
 function signJwt(username, password) {
     // Your code here
+    const schema = zod.object({             // defining the zod schema
+        username: zod.string().email(),
+        password: zod.string().min(6),
+    });
+    const data = {                       
+        username: username,
+        password: password,
+    };
+    try {
+        schema.parse(data);                 // schema.parse what it does is it validates the data and throws an error if it doesn't match the schema
+        const token = jwt.sign(data, jwtPassword); // jwt.sign takes in the data and the secret key and returns a token if the data is valid and if the data is invalid it throws an error
+        return token;
+    }
+    catch (error) { 
+        return null;
+    }
+
 }
 
 /**
@@ -27,6 +53,16 @@ function signJwt(username, password) {
  */
 function verifyJwt(token) {
     // Your code here
+    try {
+        if (jwt.verify(token, jwtPassword)) { // jwt.verify takes in a token and the secret key and returns the payload if the token is valid and throws an error if the token is invalid
+            return true;
+        }
+        return false;
+    }
+    catch (error) {
+        return false;
+    }
+
 }
 
 /**
@@ -38,12 +74,22 @@ function verifyJwt(token) {
  */
 function decodeJwt(token) {
     // Your code here
+    try {
+        const decoded = jwt.decode(token); // jwt.decode takes in a token and returns the decoded payload for example : For a token of {username: 'test', password: 'test'} it returns {username: 'test', password: 'test'} it returns null if the token is invalid and returns the payload if the token is valid but it doesn't verify the token.
+        if (decoded === null) {
+            return false;
+        }
+        return true
+    }
+    catch (error) {
+        return false;
+    }
 }
 
 
 module.exports = {
-  signJwt,
-  verifyJwt,
-  decodeJwt,
-  jwtPassword,
+    signJwt,
+    verifyJwt,
+    decodeJwt,
+    jwtPassword,
 };

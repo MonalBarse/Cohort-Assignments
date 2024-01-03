@@ -1,7 +1,7 @@
 const request = require('supertest');
 const assert = require('assert');
 const express = require('express');
-
+const PORT = process.env.PORT || 3000;
 const app = express();
 let errorCount = 0;
 
@@ -23,4 +23,11 @@ app.get('/errorCount', function(req, res) {
   res.status(200).json({ errorCount });
 });
 
+app.use(function(err, req, res, next) {
+  errorCount++;
+  res.status(404).json({ error: err.message });
+});
+
 module.exports = app;
+
+// app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
