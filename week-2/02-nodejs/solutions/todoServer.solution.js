@@ -76,7 +76,7 @@
   });
   
   app.delete('/todos/:id', (req, res) => {
-    const todoIndex = todos.findIndex(t => t.id === parseInt(req.params.id));
+    const todoIndex = todos.findIndex(t => t.id === parseInt(req.params.id)); //what findIndex does is it returns the index of the first element in the array that satisfies the condition
     if (todoIndex === -1) {
       res.status(404).send();
     } else {

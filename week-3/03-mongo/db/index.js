@@ -1,24 +1,42 @@
 const mongoose = require('mongoose');
 
 // Connect to MongoDB
-mongoose.connect('your-mongodb-url');
+mongoose.connect('mongodb+srv://monalbarse:noobmaster69@newcluster.mu1yfjh.mongodb.net/?retryWrites=true&w=majority');
 
 // Define schemas
 const AdminSchema = new mongoose.Schema({
     // Schema definition here
+    username: String,
+    password: String,
+    /*email: String,*/    
+    /* courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    }] */
 });
 
 const UserSchema = new mongoose.Schema({
     // Schema definition here
+    username: String,
+    password: String,
+    email: String,
+    purchasedCourses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    }]
 });
 
 const CourseSchema = new mongoose.Schema({
     // Schema definition here
+    title: String,
+    description: String,
+    imageLink: String,
+    price: Number
 });
 
-const Admin = mongoose.model('Admin', AdminSchema);
-const User = mongoose.model('User', UserSchema);
-const Course = mongoose.model('Course', CourseSchema);
+const Admin = mongoose.model('Admin', AdminSchema); // This will create a collection called admins in the database
+const User = mongoose.model('User', UserSchema); // This will create a collection called users in the database
+const Course = mongoose.model('Course', CourseSchema); // This will create a collection called courses in the database
 
 module.exports = {
     Admin,

@@ -42,7 +42,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // this is a middleware that parses the request body and creates req.body object for us to use. We get the parsed JSON object in req.body for eg: req.body.title will give us the title of the todo item sent by the client
 let toDos = [];
 // 1.GET /todos - Retrieve all todo items
 app.get('/todos', (req, res) => {
@@ -103,6 +103,7 @@ app.delete('/todos/:id', (req, res) => {
     res.status(200).send('Todo item deleted');
   }
 });
+
 
 
 
