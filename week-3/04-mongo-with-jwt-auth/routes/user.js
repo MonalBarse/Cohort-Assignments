@@ -3,7 +3,7 @@ const router = Router();
 const userMiddleware = require("../middleware/user");
 const { User , Course } = require("../db");
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = require('../index.js');
+const { JWT_SECRET } = require('./../config');
 const z = require("zod")
 
 // User Routes

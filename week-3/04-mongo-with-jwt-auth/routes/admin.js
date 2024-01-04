@@ -3,7 +3,7 @@ const adminMiddleware = require("../middleware/admin");
 const router = Router();
 const { Admin, Course } = require("../db")
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = require('../index.js');
+const { JWT_SECRET } = require('./../config');
 const z = require("zod");
 // Admin Routes
 router.post('/signup', async (req, res) => {
@@ -43,36 +43,38 @@ router.post('/signup', async (req, res) => {
 
 
 
+// routes/admin.js
 router.post('/signin', async (req, res) => {
     // Implement admin signin logic
     const adminSchema = z.object({
         username: z.string().email(),
         password: z.string().min(6).max(15)
     });
+
     try {
-        const { username, password } = adminSchema.parse(req.body); // We can also write this seperately as const username = adminSchema.parse(req.body).username; const password = adminSchema.parse(req.body).password; 
+        const { username, password } = adminSchema.parse(req.body);
+
         const admin = await Admin.findOne({ username: username });
         if (!admin) {
             return res.status(400).send("Admin with this username does not exist");
         }
+
         if (admin.password !== password) {
             return res.status(400).send("Incorrect password");
         }
+
         const token = jwt.sign({ username: username }, JWT_SECRET);
         res.status(200).json({ token: token });
     } catch (error) {
+        console.error(error);  // Log the error for debugging
         if (error instanceof z.ZodError) {
             res.status(400).json({ error: 'Validation Error', details: error.errors });
         } else {
-            // Handle other errors
             res.status(500).send("Internal Server Error");
         }
     }
-
-
-
-
 });
+
 
 router.post('/courses', adminMiddleware, async (req, res) => {
     // Implement course creation logic

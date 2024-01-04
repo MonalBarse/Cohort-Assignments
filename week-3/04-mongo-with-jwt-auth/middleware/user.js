@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = require('../index.js');
-const { User } = require("../db");
+const { JWT_SECRET } = require('./../config');
 
 async function userMiddleware(req, res, next) {
     try {
@@ -10,6 +9,7 @@ async function userMiddleware(req, res, next) {
 
         let authTokens = req.headers.authorization; // Corrected typo here
         const token = authTokens.split(' ')[1];
+        
 
         let decoded = jwt.verify(token, JWT_SECRET);
 
