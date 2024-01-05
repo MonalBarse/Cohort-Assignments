@@ -64,7 +64,7 @@ router.post('/signin', async (req, res) => {
         }
 
         const token = jwt.sign({ username: username }, JWT_SECRET);
-        res.status(200).json({ token: token });
+        res.status(200).json({ token: `Bearer ${token}` });
     } catch (error) {
         console.error(error);  // Log the error for debugging
         if (error instanceof z.ZodError) {
