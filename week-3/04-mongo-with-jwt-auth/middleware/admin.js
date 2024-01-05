@@ -15,6 +15,7 @@ async function adminMiddleware(req, res, next) {
 
         if (decoded.username) {
             // If decoded.username exists, then the user is an admin
+            req.user = decoded;
             next();
         } else {
             res.status(401).send("Unauthorized");

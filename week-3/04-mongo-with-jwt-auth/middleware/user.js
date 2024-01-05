@@ -14,6 +14,7 @@ async function userMiddleware(req, res, next) {
         let decoded = jwt.verify(token, JWT_SECRET);
 
         if (decoded.username) {
+            req.user = decoded;
             next();
         } else {
             res.status(401).send("Unauthorized");
