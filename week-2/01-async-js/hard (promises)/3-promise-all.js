@@ -37,7 +37,7 @@ function wait3(t) {
 
 function calculateTime(t1, t2, t3) {
     let start = new Date();
-    return Promise.all([wait1(t1), wait2(t2), wait3(t3)])
+    return Promise.all([wait1(t1), wait2(t2), wait3(t3)]) // Promise.all takes an array of promises as an input and returns a promise that resolves when all promises in the array have resolved.
         .then(() => {
             let end = new Date();
             // console.log("All promises were completed");

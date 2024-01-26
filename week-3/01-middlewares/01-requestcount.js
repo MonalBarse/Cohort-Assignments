@@ -3,7 +3,6 @@ const assert = require('assert');
 const express = require('express');
 
 const app = express();
-let requestCount = 0;
 
 // You have been given an express server which has a few endpoints.
 // Your task is to create a global middleware (app.use) which will
@@ -11,6 +10,7 @@ let requestCount = 0;
 // requestCount variable
 
 
+let requestCount = 0;
 app.use(function(req, res, next) { // this is a global middleware which means it will be called for every request. Global middlewares are defined using (app.use)
   requestCount++;
   next();

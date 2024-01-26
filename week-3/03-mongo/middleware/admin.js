@@ -11,7 +11,7 @@ async function adminMiddleware(req, res, next) {
         let username = req.headers.username;
         let password = req.headers.password;
 
-        let admin = await Admin.findOne({ username: username, password: password }); // HEre we are checking if the admin is valid or not by checking that the username and password are correct or not
+        let admin = await Admin.findOne({ username: username, password: password }); // Here we are checking if the admin is valid or not by checking that the username and password are correct or not
 
         if (!admin) {
             res.status(401).send("Invalid admin");

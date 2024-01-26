@@ -29,11 +29,11 @@ function signJwt(username, password) {
         password: zod.string().min(6),
     });
     const data = {                       
-        username: username,
+        username: username, // the z
         password: password,
     };
     try {
-        schema.parse(data);                 // schema.parse what it does is it validates the data and throws an error if it doesn't match the schema
+        schema.parse(data);                        // schema.parse what it does is it validates the data and throws an error if it doesn't match the schema. These errors are provided by zod library
         const token = jwt.sign(data, jwtPassword); // jwt.sign takes in the data and the secret key and returns a token if the data is valid and if the data is invalid it throws an error
         return token;
     }

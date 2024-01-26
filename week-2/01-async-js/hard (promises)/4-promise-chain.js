@@ -54,6 +54,6 @@ function calculateTime(t1, t2, t3) {
                 throw error; // Rethrow the error if needed
             });
     });
-}/*  */
+}
 
 module.exports = calculateTime;

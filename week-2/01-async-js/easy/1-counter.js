@@ -8,7 +8,7 @@ for x seconds. (x being a number you can choose)
 */
 
 
-const rl = readline.createInterface({
+const rl = readline.createInterface({ // create interface for readline which is a module that reads input from users
     input: process.stdin,
     output: process.stdout
 });

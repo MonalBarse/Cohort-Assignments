@@ -5,7 +5,10 @@ import { Assignment2 } from './components/Assignment2'
 function App() {
   return (
     <>
-      {/* <Assignment1 /> */}
+      <Assignment1 />
+      <br />
+      <br />
+      <br />
       <Assignment2 />
     </>
   )

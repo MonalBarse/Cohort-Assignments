@@ -61,7 +61,6 @@ let readTheFile = new Promise((resolve, reject) => {
         } else {
             resolve(newData); // Resolve the promise with the file content if successful
         }
-
     });
 })
 
@@ -72,7 +71,6 @@ readTheFile
             if (err) {
                 throw new Error("An error occurred: " + err);
             }
-
         });
     }).then(() => { console.log('The file has been saved! and updated to: ', data); })
     .catch((error) => {

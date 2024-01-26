@@ -142,7 +142,7 @@ So, readFile(path[, options], callback) Asynchronously reads the entire contents
             which will appear after 2000 ms
             `);
         setTimeout(() => {
-            resolve({
+            resolve({ 
                 name: " Monal",
                 age: "19",
                 college: "IIT (BHU)"
@@ -242,7 +242,7 @@ Arrow Function:
 2. Arguments Object:
 
     Normal Function:
-        Normal functions have their own arguments object that provides access to all the arguments passed to the function.
+        Normal functions have their own arguments object that provides access to all the arguments passed to the function. This means that the arguments object is local to a function and can only be accessed inside that function.
 
     Arrow Function:
         Arrow functions do not have their own arguments object. Instead, they inherit the arguments object from their enclosing scope.
